@@ -2,6 +2,7 @@
 Code Repository for SI Sessions for CSCE 240 at the University of South Carolina
 
 Git Reference Guide: https://git-scm.com/docs
+
 Git Guide Book (AKA Getting Started With Git): https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
 
 How to get git for your computer...
