@@ -15,6 +15,7 @@ How to get git for your computer...
 How to use git to pull this repository:
 
 * Open a terminal. This will be "git bash" on Windows, Terminal on OS X, or your terminal emulator of choice on Linux.
-* Run the following command: mkdir ~/git
-* Run the following command: git clone https://github.com/cskeen/csce240-si/
-* This will download the current veresion of the code repository to the local directory ~/git/csce240-si
+* Create a git directory on your local computer with the following command: mkdir ~/git
+* Change the working directory to your new directory with the following command: cd ~/git
+* Clone the git repository to your local machine with the following command: git clone https://github.com/cskeen/csce240-si/
+* The previous command will download the current veresion of the code repository to the local directory ~/git/csce240-si
