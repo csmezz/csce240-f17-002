@@ -1,5 +1,4 @@
 #include <iostream>
-#include <new>
 #include <string>
 
 // Dynamically allocated string printing and retrieval.
