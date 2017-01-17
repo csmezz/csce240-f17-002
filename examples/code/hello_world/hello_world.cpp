@@ -14,4 +14,4 @@ int main() {
 //
 // Explain in your own words why 'cout << "Hello World!\n"' is structured like it is.
 //
-// Would 'std.cout << "Hello World!\n";' work just as well?
+// Would 'std::cout << "Hello World!\n";' work just as well?
