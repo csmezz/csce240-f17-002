@@ -9,4 +9,4 @@ exec: hello_world makefile
 	$(CXX) $(CCFLAGS) -o $(TARGET) $(SRC)
 
 clean:
-	rm -rf *.o
+	rm -rf *.o $(TARGET) $(TARGET).dSYM
