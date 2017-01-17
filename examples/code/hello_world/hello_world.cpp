@@ -5,7 +5,6 @@ int main() {
 	cout << "Hello World!\n";
 	return 0;
 }
-
 // Thoughts about this example...
 //
 // How is 'int main() {' different from its java equivalent 'public static void main() {'?
