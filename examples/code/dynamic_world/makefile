@@ -6,7 +6,7 @@ SRC = dynamic_world.cpp
 DEPS =
 
 exec: dynamic_world makefile
-	$(CC) $(CCFLAGS) -o $(TARGET) $(SRC)
+	$(CXX) $(CCFLAGS) -o $(TARGET) $(SRC)
 
 clean:
 	rm -rf *.o
