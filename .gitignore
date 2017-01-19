@@ -36,3 +36,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Compiled Project Binaries #
+hello_world
+dynamic_world
