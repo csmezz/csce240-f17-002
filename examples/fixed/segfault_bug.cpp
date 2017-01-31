@@ -2,11 +2,9 @@
 using namespace std;
 
 int main() {
-	int * p;
-	p = new string;
-	*p = "Captain Flappy Pants found himself stranded on an island he didn't want to be on."
+	char p[140] = "Captain Flappy Pants found himself stranded on an island he didn't want to be on.";
 	
-	for (int i = 0; i < *p.length(); i++) {
+	for (int i = 0; i < 140; i++) {
 		if (p[i] == ' ') {
 			cout << endl;
 		}
@@ -14,6 +12,5 @@ int main() {
 			cout << p[i];
 		}
 	}
-	delete p;
 	return 0;
 }

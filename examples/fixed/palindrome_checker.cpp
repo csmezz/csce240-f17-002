@@ -2,6 +2,8 @@
 #include <math.h>
 using namespace std;
 
+// The original buggy version of this had string[i] in place of palindrome[i]. This causes the palindrome string to be uninitialized.
+
 int main() {
 	cout << "Enter the length of a word." << endl;
 	int dec_length;
