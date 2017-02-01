@@ -20,13 +20,13 @@ struct jelly_bean {
 	int color_code;
 	int flavor_code;
 	int calculated_weight;
-}
+};
 
 // This instantiates a specific jelly_bean struct. Input the variables you want, and it spits out a jelly_bean "object" you can insert into some other data structure.
-jelly_bean create_jellybean(char * col_str, char * flav_str, int col_code, int flav_code, int calc_weight) {
-	jellybean temp;
-	temp.color_string = col_str;
-	temp.flavor_string = flav_str;
+jelly_bean create_jellybean(char col_str[], char flav_str[], int col_code, int flav_code, int calc_weight) {
+	jelly_bean temp;
+	strcpy(temp.color_string, col_str);
+	strcpy(temp.flavor_string, flav_str);
 	temp.color_code = col_code;
 	temp.flavor_code = flav_code;
 	temp.calculated_weight = calc_weight;
@@ -34,14 +34,14 @@ jelly_bean create_jellybean(char * col_str, char * flav_str, int col_code, int f
 }
 
 // This swaps two beans in a specified array. The beans are specified by index.
-void swap_beans(jelly_bean * bean_array, int index_1, int index_2) (
+void swap_beans(jelly_bean bean_array[], int index_1, int index_2) (
 	jelly_bean temp = bean_array[index_1];
 	bean_array[index_1] = bean_array[index_2];
 	bean_array[index_2] = temp;
 }
 
 // This function is a useful method in general to determine the size of a statically allocated array.
-int array_length(jelly_bean * bean_array) {
+int array_length(jelly_bean bean_array[]) {
 	int length = sizeof(bean_array)/sizeof(bean_array[0]);
 	return length;
 }
@@ -51,13 +51,19 @@ int array_length(jelly_bean * bean_array) {
 // any other function that calls them.
 
 // This performs a bubble sort on an array of jelly_bean objects and returns the new version of the array.
-jelly_bean * bubble_sort(jelly_bean * bean_array) {
-	int i;
-	int j;
+// This version compared the calculated weight of the bean using color in tens and flavor in ones.
+// Caution! This sorts from [lowest_weight, ... highest_weight]. The project descriptions wants
+// that array to be flipped so that highest priority prints first. This can be resolved one of three
+// ways. You can change the priority codes so that lower numbers are higher priority, you can flip
+// the array around after the fact (with a separate function similar to the palindrome example), or
+// you can just read the array from the last element to the first when returning it to the terminal.
+// I'm going to use the third option, to improve readability of the other methods.
+jelly_bean * bubble_sort_weight(jelly_bean bean_array[]) {
+	int i, j;
 	int ary_len = array_length(bean_array);
 	for (i = 1; i < ary_len; i++) {
 		for (j = 0; j < (ary_len - i); j++) {
-			if (bean_array[j] > bean_array[j+1]) {
+			if (bean_array[j].calculated_weight > bean_array[j+1].calculated_weight) {
 				swap_beans(bean_array, j, j+1);
 			}
 		}
@@ -66,9 +72,9 @@ jelly_bean * bubble_sort(jelly_bean * bean_array) {
 }
 
 // This function will translate colors in string format to color priority codes, which are integers.
-// A return code of 0 indicates some sort of endocing error--likely a misspelled word.
-int jb_encode_color(char * color_string) {
-	int temp;
+// A return code of 0 indicates some sort of encoding error--likely a misspelled word.
+// This could be done with a switch statement, but I think the if statements are a little more clear.
+int jb_encode_color(char color_string[]) {
 	char red[] = "red";
 	char green[] = "green";
 	char blue[] = "blue";
@@ -86,23 +92,82 @@ int jb_encode_color(char * color_string) {
 	}
 }
 
+// Same as jb_encode_color, but with flavor priorities instead.
+int jb_encode_flavor(char flavor_string[]) {
+	char cinnamon[] = "cinnamon";
+	char cherry[] = "cherry";
+	char apple[] = "apple";
+	char bubblegum[] = "bubblegum";
+	if (strcmp(flavor_string, cinnamon) {
+		return 4;
+	}
+	else if (strcmp(flavor_string, cherry) {
+		return 3;
+	}
+	else if (strcmp(flavor_string, apple) {
+		return 2;
+	}
+	else if (strcmp(flavor_string, cherry) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
 // This does the interface bits for creating a new jelly_bean "object". You can check the validity of the resulting jelly_bean by checking color_code.
-// color_code = 0 means there was a problem creating the bean.
+// color_code = 0 means there was a problem with color. flavor_code = 0 mean there was a problem with flavor. In the event of a color failure, there
+// will also be a flavor failure since flavor will not be collected.
 jelly_bean new_jb_interface(int index) {
-	jelly_bean temp;
-	cout << endl << "Please input the color of jelly bean " << (index + 1) << "in lower case letters" << endl;
+	cout << endl << "Please input the color of jelly bean " << (index + 1) << " in lower case letters" << endl;
 	char raw_color[32];
 	cin >> raw_color;
 	int jb_color_temp = jb_encode_color(raw_color);
-	if (jb_color_temp > 0) {
-		temp.color_string = raw_color;
-		temp.color_code = jb_color_temp;
-	}
-	else {
+	// This is a validation step.
+	if (!(jb_color_temp > 0)) {
 		cout << endl << "Input invalid. Please try again." << endl;
-		temp.color_code = 0;
+		jelly_bean temp;
+		temp.color_code = jb_color_temp;
+		// We also need to make flavor an invalid result, for error checking later. If we don't, we may reference an uninitialized variable.
+		temp.flavor_code = 0;
 		return temp;
 	}
-	cout << endl << 
+	cout << endl << "Please input the flavor of jelly bean << (index + 1) << " in lower case letters" << endl;
+	char raw_flavor[32];
+	cin >> raw_flavor;
+	int jb_flavor_temp = jb_encode_flavor(raw_flavor);
+	// Another validation step.
+	if (!(jb_flavor_temp > 0)) {
+		cout << endl << "Input invalid. Please try again." << endl;
+		jelly_bean temp;
+		temp.color_code = jb_color_temp;
+		temp.flavor_code = jb_flavor_temp;
+		return temp;
+	}
+	int jb_calculated_weight = (10 * jb_color_temp) + jb_flavor_temp;
+	// This will return a full jellybean object.
+	return create_jellybean(raw_color, flavor_color, jb_color_temp, jb_flavor_temp, jb_calculated_weight);
 }
 
+// Finally we reach the main function!
+int main() {
+	// Someday you might want to change the number of beans in the jar...
+	int num_beans = 10;
+	jelly_bean bean_collection[num_beans];
+	cout << "Welcome to the bean sorter!" << endl;
+	for (int i = 0; i < num_beans; i++) {
+		bean_collection[i] = new_jb_interface(i);
+	}
+	bubble_sort_weight(bean_collection);
+	cout << endl << "{ ";
+	// Prints out the sorted array in reverse order so the highest priority prints first. See comment for bubble_sort_weight().
+	for (int j = 0; j < num_beans; j++) {
+		cout << "<" << bean_collection[num_beans - j].color_string << ", " << bean_collection[num_beans - j].flavor_string << ">";
+		// If not (first element or last element)...
+		if (!((j == 0) || (j == num_beans))) {
+			// Make pretty, with commas in between elements.
+			cout << " , ";
+		}
+	}
+	cout << " }" << endl;
+}
