@@ -60,7 +60,7 @@ jelly_bean * bubble_sort_weight(jelly_bean bean_array[]) {
 	int i, j;
 	int ary_len = array_length(bean_array);
 	cout << ary_len << endl;
-	for (i = 0; i < ary_len; i++) {
+	for (i = 1; i < ary_len; i++) {
 		for (j = 0; j < (ary_len - 1); j++) {
 			cout << bean_array[j].calculated_weight << " <? " << bean_array[j+1].calculated_weight << endl;
 			if (bean_array[j].calculated_weight < bean_array[j+1].calculated_weight) {
@@ -79,13 +79,13 @@ int jb_encode_color(char color_string[]) {
 	char red[] = "red";
 	char green[] = "green";
 	char blue[] = "blue";
-	if (strcmp(color_string, red)) {
+	if (strcmp(color_string, red) == 0) {
 		return 3;
 	}
-	else if (strcmp(color_string, green)) {
+	else if (strcmp(color_string, green) == 0) {
 		return 2;
 	}
-	else if (strcmp(color_string, blue)) {
+	else if (strcmp(color_string, blue) == 0) {
 		return 1;
 	}
 	else {
@@ -99,16 +99,16 @@ int jb_encode_flavor(char flavor_string[]) {
 	char cherry[] = "cherry";
 	char apple[] = "apple";
 	char bubblegum[] = "bubblegum";
-	if (strcmp(flavor_string, cinnamon)) {
+	if (strcmp(flavor_string, cinnamon) == 0) {
 		return 4;
 	}
-	else if (strcmp(flavor_string, cherry)) {
+	else if (strcmp(flavor_string, cherry) == 0) {
 		return 3;
 	}
-	else if (strcmp(flavor_string, apple)) {
+	else if (strcmp(flavor_string, apple) == 0) {
 		return 2;
 	}
-	else if (strcmp(flavor_string, bubblegum)) {
+	else if (strcmp(flavor_string, bubblegum) == 0) {
 		return 1;
 	}
 	else {
@@ -124,6 +124,7 @@ jelly_bean new_jb_interface(int index) {
 	char raw_color[32];
 	cin >> raw_color;
 	int jb_color_temp = jb_encode_color(raw_color);
+	cout << jb_color_temp << endl;
 	// This is a validation step.
 	if (!(jb_color_temp > 0)) {
 		cout << endl << "Input invalid. Please try again." << endl;
@@ -137,6 +138,7 @@ jelly_bean new_jb_interface(int index) {
 	char raw_flavor[32];
 	cin >> raw_flavor;
 	int jb_flavor_temp = jb_encode_flavor(raw_flavor);
+	cout << jb_flavor_temp << endl;
 	// Another validation step.
 	if (!(jb_flavor_temp > 0)) {
 		cout << endl << "Input invalid. Please try again." << endl;
