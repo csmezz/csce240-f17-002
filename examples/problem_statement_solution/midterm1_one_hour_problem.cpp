@@ -10,6 +10,9 @@ using namespace std;
  * Permission granted for use as a reference. 
  */
 
+// Setting the size of the array globally.
+int num_beans = 5;
+
 // What's going on here? C (and, therefore, C++) allows you to define data structures called structs, which encompass multiple types of data.
 // They're sort of lightweight object that are used to store related sets of data. You can reference an element of a struct in struct_name.element_name format.
 // For example, if I wanted the color code of jellybean one, I would use the syntax jellybean1.color_code. Structs need to be instantiated just like 
@@ -34,16 +37,17 @@ jelly_bean create_jellybean(char col_str[], char flav_str[], int col_code, int f
 }
 
 // This swaps two beans in a specified array. The beans are specified by index.
-void swap_beans(jelly_bean bean_array[], int index_1, int index_2) (
-	jelly_bean temp = bean_array[index_1];
+void swap_beans(jelly_bean bean_array[], int index_1, int index_2) {
+	jelly_bean temp;
+	temp = bean_array[index_1];
 	bean_array[index_1] = bean_array[index_2];
 	bean_array[index_2] = temp;
 }
 
 // This function is a useful method in general to determine the size of a statically allocated array.
 int array_length(jelly_bean bean_array[]) {
-	int length = sizeof(bean_array)/sizeof(bean_array[0]);
-	return length;
+	// Uses statically defined array length now.
+	return num_beans;
 }
 
 // swap_beans() and array_length() come before bubble_sort() because they're functions used within bubble sort.
@@ -52,18 +56,15 @@ int array_length(jelly_bean bean_array[]) {
 
 // This performs a bubble sort on an array of jelly_bean objects and returns the new version of the array.
 // This version compared the calculated weight of the bean using color in tens and flavor in ones.
-// Caution! This sorts from [lowest_weight, ... highest_weight]. The project descriptions wants
-// that array to be flipped so that highest priority prints first. This can be resolved one of three
-// ways. You can change the priority codes so that lower numbers are higher priority, you can flip
-// the array around after the fact (with a separate function similar to the palindrome example), or
-// you can just read the array from the last element to the first when returning it to the terminal.
-// I'm going to use the third option, to improve readability of the other methods.
 jelly_bean * bubble_sort_weight(jelly_bean bean_array[]) {
 	int i, j;
 	int ary_len = array_length(bean_array);
-	for (i = 1; i < ary_len; i++) {
-		for (j = 0; j < (ary_len - i); j++) {
-			if (bean_array[j].calculated_weight > bean_array[j+1].calculated_weight) {
+	cout << ary_len << endl;
+	for (i = 0; i < ary_len; i++) {
+		for (j = 0; j < (ary_len - 1); j++) {
+			cout << bean_array[j].calculated_weight << " <? " << bean_array[j+1].calculated_weight << endl;
+			if (bean_array[j].calculated_weight < bean_array[j+1].calculated_weight) {
+				cout << "Should swap..." << endl;
 				swap_beans(bean_array, j, j+1);
 			}
 		}
@@ -78,13 +79,13 @@ int jb_encode_color(char color_string[]) {
 	char red[] = "red";
 	char green[] = "green";
 	char blue[] = "blue";
-	if (strcmp(color_string, red) {
+	if (strcmp(color_string, red)) {
 		return 3;
 	}
-	else if (strcmp(color_string, green) {
+	else if (strcmp(color_string, green)) {
 		return 2;
 	}
-	else if (strcmp(color_string, blue) {
+	else if (strcmp(color_string, blue)) {
 		return 1;
 	}
 	else {
@@ -98,16 +99,16 @@ int jb_encode_flavor(char flavor_string[]) {
 	char cherry[] = "cherry";
 	char apple[] = "apple";
 	char bubblegum[] = "bubblegum";
-	if (strcmp(flavor_string, cinnamon) {
+	if (strcmp(flavor_string, cinnamon)) {
 		return 4;
 	}
-	else if (strcmp(flavor_string, cherry) {
+	else if (strcmp(flavor_string, cherry)) {
 		return 3;
 	}
-	else if (strcmp(flavor_string, apple) {
+	else if (strcmp(flavor_string, apple)) {
 		return 2;
 	}
-	else if (strcmp(flavor_string, cherry) {
+	else if (strcmp(flavor_string, bubblegum)) {
 		return 1;
 	}
 	else {
@@ -132,7 +133,7 @@ jelly_bean new_jb_interface(int index) {
 		temp.flavor_code = 0;
 		return temp;
 	}
-	cout << endl << "Please input the flavor of jelly bean << (index + 1) << " in lower case letters" << endl;
+	cout << endl << "Please input the flavor of jelly bean " << (index + 1) << " in lower case letters" << endl;
 	char raw_flavor[32];
 	cin >> raw_flavor;
 	int jb_flavor_temp = jb_encode_flavor(raw_flavor);
@@ -146,28 +147,30 @@ jelly_bean new_jb_interface(int index) {
 	}
 	int jb_calculated_weight = (10 * jb_color_temp) + jb_flavor_temp;
 	// This will return a full jellybean object.
-	return create_jellybean(raw_color, flavor_color, jb_color_temp, jb_flavor_temp, jb_calculated_weight);
+	return create_jellybean(raw_color, raw_flavor, jb_color_temp, jb_flavor_temp, jb_calculated_weight);
 }
 
 // Finally we reach the main function!
 int main() {
 	// Someday you might want to change the number of beans in the jar...
-	int num_beans = 10;
 	jelly_bean bean_collection[num_beans];
 	cout << "Welcome to the bean sorter!" << endl;
 	for (int i = 0; i < num_beans; i++) {
 		bean_collection[i] = new_jb_interface(i);
-	}
-	bubble_sort_weight(bean_collection);
-	cout << endl << "{ ";
-	// Prints out the sorted array in reverse order so the highest priority prints first. See comment for bubble_sort_weight().
-	for (int j = 0; j < num_beans; j++) {
-		cout << "<" << bean_collection[num_beans - j].color_string << ", " << bean_collection[num_beans - j].flavor_string << ">";
-		// If not (first element or last element)...
-		if (!((j == 0) || (j == num_beans))) {
-			// Make pretty, with commas in between elements.
-			cout << " , ";
+		if ((bean_collection[i].color_code == 0) || (bean_collection[i].flavor_code == 0)) {
+			bean_collection[i] = new_jb_interface(i);
 		}
 	}
-	cout << " }" << endl;
+	bubble_sort_weight(bean_collection);
+	cout << endl << "{";
+	// Prints out the sorted array in reverse order so the highest priority prints first. See comment for bubble_sort_weight().
+	for (int j = 0; j < num_beans; j++) {
+		cout << "<" << bean_collection[j].color_string << ", " << bean_collection[j].flavor_string << ">";
+		// If not (first element or last element)...
+		if (!(j == (num_beans - 1))) {
+			// Make pretty, with commas in between elements.
+			cout << ", ";
+		}
+	}
+	cout << "}" << endl;
 }
