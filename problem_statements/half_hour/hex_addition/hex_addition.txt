@@ -1,0 +1,4 @@
+Not every programming problem can or should be tackled by starting from first principles. C++ has several container classes that make life easier for programmers. One of these classes is the <vector> class, which is a sort of “smart array” that will automatically resize itself. Using the <vector> class, and the HexDigit struct the group worked out on the board, write a program that will add two hex numbers together in character-wise style and return the decimal result to the console. You may “hard code” the hex numbers into the program—no input is required by the user.
+
+Input: 0x3F & 0x4BB
+
