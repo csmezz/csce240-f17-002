@@ -1,6 +1,0 @@
-Implement the add function in template_adder.cpp. You'll do this by 
-making use of templates to add two Number objects together and 
-return the sum as an unsigned integer. You only need to implement the 
-add function: everything else is already written for you.
-
-Note: Make sure to check the makefile!
