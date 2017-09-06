@@ -1,0 +1,35 @@
+"Trivia Master" -  trivia game intended for display on a projector.
+
+ This is a long-term project for session "regulars" visiting the CSCE 240 
+ Section 002 Sessions. We'll be using the lessons learned in CSCE 240 to 
+ implement a real piece of software. "Jeopardy" is the pre-midterm project,
+ and it will be used in the midterm two-hour review session.
+
+ Question: How does the game work?
+
+ Answer: Trivia Master combines ideas from a few other trivia games. The
+ basic idea is that a question is asked to the students attending a session.
+ Students can answer as either a group or as individuals, depending on how
+ the SI leader has configured it. The SI leader will provide a header and 
+ code to handle the networking aspects as a "black box" for students. A 
+ student needs to be able to register his or herself as an individual or
+ part of a group.
+
+ Question: Any stretch goals?
+
+ Answer: Absolutely! If progress goes faster than expected, we can implement
+ a few other features, like “phone a friend”, and “ask the audience”. We’ll 
+ see how it goes.
+
+ Question: Why do this? I don't need more work!
+
+ Answer: Nobody learns to program by listening to other people talk about
+ programming. This is a simple program that will end up touching on every
+ concept discussed in the first half of the course. If you understand and
+ can meaningfully contribute to this game, you'll do fine on the tests and
+ projects. Plus, I'm not going to give you a grade. This lets you test and
+ learn programming concepts without having to risk your course grade.
+ Believe it or not, it’s easier to learn to program by doing something fun 
+ That you want to do, rather than doing something boring that you’re 
+ forced to do.
+
