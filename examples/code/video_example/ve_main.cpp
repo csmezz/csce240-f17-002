@@ -8,7 +8,7 @@ int main() {
     int x, y;
     cout << "User, please tell me two numbers to add." << endl;
     cin >> x >> y;
-    cout << "Adding these two numbers yields: ";
+    cout << "Adding these two numbers yields: " << endl;
     cout << add(x, y); 
     return 0;
 }
