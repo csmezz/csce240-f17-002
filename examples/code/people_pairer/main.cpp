@@ -54,8 +54,8 @@ int main() {
 	// gets more than two people added.
 	for (int i = 0; i < size; i++) {
 		int rand_pair = -1;
+		int temp;
 		while (rand_pair == -1) {
-			int temp;
 			temp = rand() % p_size; // This produces a value between 0 and p_size.
 			if (pairs[temp].size() < 2) {
 				rand_pair = temp;
