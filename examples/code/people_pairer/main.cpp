@@ -1,6 +1,13 @@
 // People Pairer
 // Written Sept. 12th 2017
 // Finds unique random pairs of people.
+
+// A note for Dr. Valafar's students: this implementation uses vectors, which are a part of the
+// C++ Standard Template Library. Dr. Valafar does not want you to use STL classes in your
+// assignments. You can implement a version of this using classic arrays without a lot of trouble. 
+// Can you identify a part of this program that would be hard to re-implement using nothing but 
+// classic arrays? Send me an email if you have trouble!
+
 #include <vector>
 #include <iostream>
 #include <string>
