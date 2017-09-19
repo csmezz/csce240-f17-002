@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -Wall -std=c++11 -I./includes -L./includes -lrestbed
+CXXFLAGS = -g -Wall -std=c++11 -I./includes -L./includes -l:restbed
 TARGET = TRIVIA_MASTER
 
 exec: main.o TM_Net.o TM_Message.o makefile
