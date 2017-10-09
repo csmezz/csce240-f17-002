@@ -1,9 +1,0 @@
-Implement a class to sort a list of strings by length. Use a merge sort 
-to build a sorted singly linked list of these words, from smallest string 
-to largest. Boilerplate code with a set of example words has been 
-provided in the github repository. You may use the standard C++ <string> 
-class rather than c-style strings if you wish, but you must implement the 
-linked list yourself. Implement all functions that need implementation, 
-but constructors have been provided. If a destructor is required, 
-implement it.
-
