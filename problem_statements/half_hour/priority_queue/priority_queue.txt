@@ -1,9 +1,0 @@
-Not every problem requires digging deep into the weeds and starting from first principles. Write a “real world style” 
-priority queue the easy way. Use the C++ standard <list> container class (documentation is available online) to implement 
-a priority queue to prioritize a list of 11 words with the smallest words having priority over the largest. The program 
-should print the words to the console according to their priority. This can be used to make a priority queue as either a 
-stack or a heap, your choice.
-
-List of words: 
-{“four”, “puzzling”, “a”, “apple”, “orange”, “oranges”, “to”, “longjumping”, “the”, “blackjack”, “maximizing”}
-

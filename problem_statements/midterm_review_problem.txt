@@ -1,0 +1,22 @@
+This problem is intended to be solved by a small group of four or five people over ~60 minutes. It can be solved procedurally, but you should try to solve it in an object-oriented manner. Consider having two classes: Graph and Ball.
+
+Write a C++ program that will calculate and report the height over time of a ball thrown into the air. The formula of the height of the ball (h) for any time (t) is h(t) = 15 + 14t - t^2 . In addition to plotting the height of the ball, the program should calculate the exact time the ball remains in the air (find the times where h(t) is equal to 0, and choose the most sensible answer). Round the time to the nearest thousandth of a second.
+
+The results must be plotted on the most appropriate quadrant of a typical cartesian graph, and should be scaled so that the entire path is apparent in the chart. For the chart, display results rounded to the nearest whole integer (12.3 -> 12, 14.7 -> 15, etc). A *rough* example of how the graph ought to look is given below, your numbers will be different.
+
+Hints: To scale the graph correctly, you should start by calculating the maximum height of the ball as well as the landing time. Remember that you can use tabs to align the columns. It may be helpful to convert your actual calculations to graph-scaled values in an array. If you have a mark every five integers on the y-axis, consider determining whether the number rounds to a multiple of five, or between a multiple of five. The maximum height of a parabola according to the quadratic form of an equation is x = -b/2a .
+
+	 _______________________________________________________________________
+      	|			Ball lands @ time = 7.84s		    	| 	
+25 - 	|									|
+      	|									|
+20 - 	|				*					|
+      	|			*		*				|
+15 - 	|									|
+      	|		*				*			|
+10 - 	|									|
+       	|	*						*		|
+05 - 	|									|
+       	|*									|
+00 -	|_______________________________________________________________*_______|
+	 0s	1s	2s	3s	4s	5s	6s	7s	8s
