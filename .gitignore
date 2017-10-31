@@ -40,3 +40,7 @@ Thumbs.db
 # Compiled Project Binaries #
 hello_world
 dynamic_world
+a.out
+
+# Vim swap files #
+*.swp
