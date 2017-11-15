@@ -9,18 +9,15 @@ class ArrayList {
     public:
          ArrayList();
          ArrayList(int _size, double value);
-         ArrayList(double *_array, int size);
+         ArrayList(double &_array, int _size);
          ~ArrayList();
-         void insert(int index, double *value);
-         void remove(int index);
-         double get(int index);
-         int find(double *value);
-         bool equals(double *value);
-         void init(double *value);
-         ArrayList& operator=(ArrayList *value);
-         bool operator==(ArrayList *value);
-         bool operator!=(ArrayList *value);
-         ArrayList& operator++();
+         double create(double value);
+         double retrieve(int index);
+         double update(int index, double value);
+         double del(int index);
+         ArrayList& operator=(ArrayList &value);
+         bool operator==(ArrayList &value);
+         bool operator!=(ArrayList &value);
     private:
          double *data;
          int size;
